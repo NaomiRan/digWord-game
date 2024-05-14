@@ -34,7 +34,10 @@ while cur_turn < max_turn:
 
     # compare each letter of input with word_bank
     index = 0
-    for c in guess:
+    # one condition is needed to consider that the length of input is larger than the guess_to_word
+    for index,c in enumerate(guess):
+        if index >= len(word_to_guess):
+            break
         if c == word_to_guess[index]:
             print(c, end=" ")
             if c in misplaces_letters:
@@ -46,7 +49,7 @@ while cur_turn < max_turn:
             if c not in incorrect_letters:
                 incorrect_letters.append(c)
                 print("_", end=" ")
-        index += 1
+
     cur_turn += 1
 
     # check if the user wins
